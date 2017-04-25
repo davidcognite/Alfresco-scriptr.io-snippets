@@ -2,6 +2,8 @@ var http = require("http");
 
 //Get the body of the post
 var myRequestBody = JSON.parse(request.rawBody);
+var myAuthuser = myRequestBody.authUser;
+var myAuthpw = myRequestBody.authPw;
 var myTweet =  myRequestBody.tweet;
 var myTweetLink =  myRequestBody.tweetLink;
 var myUser =  myRequestBody.user;
@@ -9,7 +11,7 @@ var myUser =  myRequestBody.user;
 //The request object below will be used to make an HTTP call that will do a country lookup based on the IP 
 var requestObject = {
  "url": "http://ec2-35-176-16-152.eu-west-2.compute.amazonaws.com/alfresco/s/api/login",
- "bodyString": "{'username':'admin','password':'i-0c0a39342fe975cbd'}",
+ "bodyString": "{'username':'" + myAuthuser + "','password':'" + myAuthpw + "'}",
  "method": "POST" // the method is optional, it defaults to GET.
 }
 
